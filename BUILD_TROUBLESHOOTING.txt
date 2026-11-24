@@ -1,0 +1,17 @@
+rFactor 2 Lua Framework - build troubleshooting
+
+1. Do not double-click the .sln for the first build if Visual Studio shows
+   "System.Memory, Version=4.0.2.0 could not be loaded".
+2. Run BUILD_RELEASE.bat. It locates MSBuild with Visual Studio's vswhere.exe
+   and builds VC2022/rF2LuaFramework.vcxproj directly.
+3. Install Visual Studio 2022 workloads/components:
+   - Desktop development with C++
+   - MSVC v143 x64/x86 build tools
+   - Windows 10/11 SDK
+4. The first build downloads official Lua 5.5.1 source from lua.org.
+   Internet access is required. The script verifies the official SHA-256.
+5. If the System.Memory error also occurs when opening the .vcxproj or when
+   launching MSBuild, repair/update Visual Studio 2022 using Visual Studio
+   Installer. The project does not declare a System.Memory reference.
+
+This package has not been compiled on Windows in this environment.

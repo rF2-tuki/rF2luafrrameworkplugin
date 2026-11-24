@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64"><Configuration>Debug</Configuration><Platform>x64</Platform></ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64"><Configuration>Release</Configuration><Platform>x64</Platform></ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion><Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{A8B7F2E1-5D2C-4F73-9A10-2C8D8E4B6F31}</ProjectGuid>
+    <RootNamespace>rF2LuaFramework</RootNamespace><WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>true</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><CharacterSet>MultiByte</CharacterSet></PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration"><ConfigurationType>DynamicLibrary</ConfigurationType><UseDebugLibraries>false</UseDebugLibraries><PlatformToolset>v143</PlatformToolset><WholeProgramOptimization>true</WholeProgramOptimization><CharacterSet>MultiByte</CharacterSet></PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <PropertyGroup><OutDir>$(ProjectDir)..\Build\$(Platform)\$(Configuration)\</OutDir><IntDir>$(ProjectDir)..\Build\obj\$(Platform)\$(Configuration)\</IntDir><TargetName>rF2LuaFramework</TargetName></PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel><SDLCheck>true</SDLCheck><ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp14</LanguageStandard><RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_USRDLL;LUA_USE_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>$(ProjectDir)..\Include;$(ProjectDir)..\Lua55\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link><SubSystem>Windows</SubSystem><GenerateDebugInformation>true</GenerateDebugInformation><AdditionalDependencies>d3d11.lib;dxgi.lib;d2d1.lib;dwrite.lib;%(AdditionalDependencies)</AdditionalDependencies></Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)'=='Release'"><ClCompile><Optimization>MaxSpeed</Optimization><FunctionLevelLinking>true</FunctionLevelLinking><IntrinsicFunctions>true</IntrinsicFunctions></ClCompile><Link><OptimizeReferences>true</OptimizeReferences><EnableCOMDATFolding>true</EnableCOMDATFolding></Link></ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="$(ProjectDir)..\Source\Plugin.cpp" />
+    <ClCompile Include="$(ProjectDir)..\Source\LuaEngine.cpp" />
+    <ClCompile Include="$(ProjectDir)..\Source\DX11Overlay.cpp" />
+    <ClCompile Include="$(ProjectDir)..\Source\DX11PresentHook.cpp" />
+    <ClCompile Include="$(ProjectDir)..\Source\OverlayWindow.cpp" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lapi.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lcode.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lctype.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\ldebug.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\ldo.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\ldump.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lfunc.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lgc.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\llex.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lmem.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lobject.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lopcodes.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lparser.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lstate.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lstring.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\ltable.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\ltm.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lundump.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lvm.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lzio.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lauxlib.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lbaselib.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lcorolib.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\ldblib.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\liolib.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\lmathlib.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\loadlib.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\loslib.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lstrlib.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\ltablib.c" />
+    <ClCompile Include="$(ProjectDir)..\Lua55\src\lutf8lib.c" /><ClCompile Include="$(ProjectDir)..\Lua55\src\linit.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(ProjectDir)..\Include\InternalsPlugin.hpp" /><ClInclude Include="$(ProjectDir)..\Include\PluginObjects.hpp" />
+    <ClInclude Include="$(ProjectDir)..\Include\LuaEngine.hpp" />
+    <ClInclude Include="$(ProjectDir)..\Include\DX11Overlay.hpp" />
+    <ClInclude Include="$(ProjectDir)..\Include\DX11PresentHook.hpp" />
+    <ClInclude Include="$(ProjectDir)..\Include\OverlayWindow.hpp" />
+    <ClInclude Include="$(ProjectDir)..\Include\DiagLog.hpp" />
+  </ItemGroup>
+  <ItemGroup><None Include="$(ProjectDir)..\Lua\Scripts\01_example.lua" /><None Include="$(ProjectDir)..\Scripts\PrepareLua.ps1" /></ItemGroup>
+  <Target Name="PrepareLuaSources" BeforeTargets="PrepareForBuild">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File &quot;$(ProjectDir)..\Scripts\PrepareLua.ps1&quot; -Destination &quot;$(ProjectDir)..\Lua55&quot;" />
+  </Target>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>
